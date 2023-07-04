@@ -1,14 +1,18 @@
 const cleanSet = (set, startString) => {
-  if (typeof startString !== 'string' || startString === '') {
+  const parts = [];
+  if (!set || !startString || !(set instanceof Set) || typeof startString !== 'string') {
     return '';
   }
-  let result = '';
-  set.forEach((value) => {
-    if (value.startsWith(startString)) {
-      result += `-${value.slice(startString.length)}`;
+  for (const value of set.values()) {
+    if (typeof value === 'string' && value.startsWith(startString)) {
+      const valueSubStr = value.substring(startString.length);
+
+      if (valueSubStr && valueSubStr !== value) {
+        parts.push(valueSubStr);
+      }
     }
-  });
-  return result.slice(1);
+  }
+  return parts.join('-');
 };
 
 export default cleanSet;
