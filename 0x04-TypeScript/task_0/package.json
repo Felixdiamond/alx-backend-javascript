@@ -6,8 +6,7 @@
   "scripts": {
     "start-dev": "webpack-dev-server --open",
     "build": "webpack",
-    "test": "jest",
-    "ban-kai": "tsc --noEmit && webpack-dev-server"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
