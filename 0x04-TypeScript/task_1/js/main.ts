@@ -21,3 +21,33 @@ interface printTeacherFunction {
 }
 
 const printTeacherVar: printTeacherFunction = printTeacher;
+
+interface IStudent {
+  firstName: string;
+  lastName: string;
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+interface IStudentConstructor {
+  new (firstName: string, lastName: string): IStudent;
+}
+
+const StudentClass: IStudentConstructor = class Student implements IStudent {
+  firstName: string;
+  lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return "Currently working";
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
+
