@@ -10,7 +10,7 @@ async function readDatabase(filePath) {
     const fields = {};
     for (const student of students) {
       if (student) {
-        const [ , , field] = student.split(',');
+        const [, , field] = student.split(',');
         if (!fields[field]) fields[field] = [];
         fields[field].push(student.split(',')[0]);
       }
