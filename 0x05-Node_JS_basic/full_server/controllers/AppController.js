@@ -1,11 +1,9 @@
-/**
- * Contains the miscellaneous route handlers.
- */
+const readDatabase = require('../utils');
+
 class AppController {
   static getHomepage(request, response) {
     response.status(200).send('Hello Holberton School!');
   }
 }
 
-export default AppController;
 module.exports = AppController;
