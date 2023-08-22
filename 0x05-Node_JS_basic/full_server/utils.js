@@ -8,13 +8,14 @@ async function readDatabase(filePath) {
     const data = await readFile(filePath, 'utf8');
     const students = data.split('\n').slice(1);
     const fields = {};
-    for (const student of students) {
+    students.forEach((student) => {
       if (student) {
-        const [ , , field] = student.split(',');
+        const studentData = student.split(',');
+        const field = studentData[2];
         if (!fields[field]) fields[field] = [];
-        fields[field].push(student.split(',')[0]);
+        fields[field].push(studentData[0]);
       }
-    }
+    });
     return fields;
   } catch (err) {
     throw new Error('Cannot load the database');
