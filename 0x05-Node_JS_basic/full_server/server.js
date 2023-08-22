@@ -1,12 +1,8 @@
 const express = require('express');
-const mapRoutes = require('./routes');
+const router = require('./routes/index');
 
 const app = express();
-const PORT = 1245;
-
-mapRoutes(app);
-app.listen(PORT, () => {
-  console.log(`Server listening on PORT ${PORT}`);
-});
+app.use('/', router);
+app.listen(1245);
 
 module.exports = app;
