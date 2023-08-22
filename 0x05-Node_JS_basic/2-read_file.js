@@ -4,7 +4,7 @@ function countStudents(path) {
   try {
     const data = fs.readFileSync(path, 'utf8');
     const lines = data.split('\n');
-    let students = lines.slice(1).map(line => line.split(',')).filter(student => student.length === 4);
+    const students = lines.slice(1).map((line) => line.split(',')).filter((student) => student.length === 4);
     console.log(`Number of students: ${students.length}`);
     const fields = {};
     for (const student of students) {
@@ -20,4 +20,3 @@ function countStudents(path) {
 }
 
 module.exports = countStudents;
-
