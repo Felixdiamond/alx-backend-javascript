@@ -1,4 +1,4 @@
-import readDatabase from '../utils';
+const readDatabase = require('../utils');
 
 /**
  * The list of supported majors.
@@ -27,13 +27,13 @@ class StudentsController {
           return 0;
         };
 
-        for (const [field, group] of Object.entries(studentGroups).sort(cmpFxn)) {
+        Object.entries(studentGroups).sort(cmpFxn).forEach(([field, group]) => {
           responseParts.push([
             `Number of students in ${field}: ${group.length}.`,
             'List:',
             group.map((student) => student.firstname).join(', '),
           ].join(' '));
-        }
+        });
         response.status(200).send(responseParts.join('\n'));
       })
       .catch((err) => {
@@ -69,5 +69,4 @@ class StudentsController {
   }
 }
 
-export default StudentsController;
 module.exports = StudentsController;
