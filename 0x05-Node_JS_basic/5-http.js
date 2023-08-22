@@ -102,12 +102,11 @@ const SERVER_ROUTE_HANDLERS = [
 ];
 
 app.on('request', (req, res) => {
-  for (const routeHandler of SERVER_ROUTE_HANDLERS) {
+  SERVER_ROUTE_HANDLERS.forEach((routeHandler) => {
     if (routeHandler.route === req.url) {
       routeHandler.handler(req, res);
-      break;
     }
-  }
+  });
 });
 
 app.listen(PORT, HOST, () => {
